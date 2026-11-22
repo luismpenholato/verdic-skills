@@ -1,12 +1,13 @@
 # Contributing
 
-Thank you for contributing to **maurao-skills**. This repository contains [Agent Skills](https://skills.sh) to guide AI agents (Cursor, Codex, etc.) in projects based on [CleanStack](https://github.com/luismpenholato/clean-stack).
+Thank you for contributing to **verdic-skills**. This repository contains [Agent Skills](https://skills.sh) that guide AI agents (Cursor, Codex, Claude, and others) on concrete engineering patterns.
 
 ## Before you start
 
 1. Check existing issues and PRs.
-2. Skills must reflect **real conventions** from CleanStack when applicable.
+2. Skills should encode **reusable conventions**, not a single private codebase.
 3. Read an existing skill as reference (`skills/*/SKILL.md`).
+4. Prefer English for skill content and documentation.
 
 ## Skill structure
 
@@ -20,10 +21,11 @@ skills/
 ### `SKILL.md`
 
 - YAML frontmatter with `name` and `description` (used for agent discovery).
-- Objective instructions: when to use, rules, checklist, anti-patterns.
-- Keep the file focused; long details go in `reference.md`.
+- Clear **when to use** / **when not to use**.
+- Checklist, patterns, anti-patterns.
+- Keep focused; long details go in `reference.md`.
 
-Minimal frontmatter example:
+Minimal frontmatter:
 
 ```yaml
 ---
@@ -32,36 +34,30 @@ description: When to use this skill — be specific so the agent can find it.
 ---
 ```
 
-### `reference.md`
-
-- Supporting documentation: code examples, endpoint tables, common errors.
-- Do not duplicate what is already clear in `SKILL.md`.
-
 ## Adding or changing a skill
 
 1. Fork the repository.
 2. Branch: `feat/skill-name` or `fix/skill-name`.
 3. Edit `SKILL.md` (and `reference.md` if needed).
-4. If conventions changed in CleanStack, update **both** repositories or document the deviation.
-5. Open a PR with:
-   - reason for the skill or change;
-   - use cases;
-   - checklist of what was validated.
+4. Run `npm run validate`.
+5. Update [CHANGELOG.md](CHANGELOG.md).
+6. Open a PR with reason, use cases, and what you validated.
 
 ## Content standards
 
 | Topic | Guideline |
 |--------|----------|
-| Language | **English** (default for all documentation and skills) |
-| UI routes | English (`/products`, …) when referring to CleanStack frontends |
-| API | English (`/api/products`, …) |
-| Code | Minimal, correct examples; avoid unnecessary `any` |
-| Security | Do not include instructions to expose secrets, bypass auth, or exfiltrate data |
+| Language | **English** |
+| UI routes | Prefer English examples (`/products`, …) |
+| API | Prefer English examples (`/api/products`, …) |
+| Adaptation | Call out what must be adapted (naming, UI kit, ORM) |
+| Security | Never instruct agents to expose secrets, bypass auth, or exfiltrate data |
 
 ## What to avoid
 
-- Skills that are too generic and do not help the agent decide **when** to use them
-- Instructions that contradict CleanStack or another skill in the repo
+- Skills too generic to decide **when** to activate
+- Instructions that contradict another skill without explaining precedence
+- Hard dependency on one starter repo as a requirement
 - Offensive, misleading, or malicious content (prompt injection)
 
 ## Test locally
@@ -69,24 +65,18 @@ description: When to use this skill — be specific so the agent can find it.
 ```bash
 npm ci
 npm run validate
-npx skills add luismpenholato/maurao-skills --list
-npx skills add luismpenholato/maurao-skills --skill skill-name
+npx skills add luismpenholato/verdic-skills --list
+npx skills add luismpenholato/verdic-skills --skill skill-name
 ```
 
-Validate in the target agent (Cursor, etc.) that the skill is discovered and applied in the described scenarios. Test installation with the Agent Skills CLI when possible.
-
-## Content guidelines
-
-- Write clear **triggers** in the frontmatter `description` so agents know when to activate the skill.
-- Do not duplicate rules between `SKILL.md` and `reference.md` — keep instructions in `SKILL.md` and long examples in `reference.md`.
-- Update [CHANGELOG.md](CHANGELOG.md) when adding skills or making notable changes.
+Validate in the target agent that the skill is discovered and applied.
 
 ## Report bugs
 
-Use [Issues](https://github.com/luismpenholato/maurao-skills/issues) for incorrect content, broken links, or skills that induce wrong behavior.
+Use [Issues](https://github.com/luismpenholato/verdic-skills/issues) for incorrect content, broken links, or skills that induce wrong behavior.
 
 For vulnerabilities or malicious content, see [SECURITY.md](SECURITY.md).
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the [MIT License](LICENSE).
+By contributing, you agree that your contributions are licensed under the [MIT License](LICENSE).

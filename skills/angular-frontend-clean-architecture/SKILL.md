@@ -1,6 +1,6 @@
 ---
 name: angular-frontend-clean-architecture
-description: Angular 21 standalone frontend with Clean Architecture, vertical slice (pages by feature), signals, OnPush, and ng-zorro. Use when creating or refactoring Angular apps, adding pages, components, services, directives, pipes, or when the user mentions Angular frontend, standalone components, or signals.
+description: Angular 21 standalone frontend with vertical slice (pages by feature), signals, OnPush, and ng-zorro. Use when creating or refactoring Angular apps, adding pages, components, services, directives, pipes, or when the user mentions Angular frontend, standalone components, or signals.
 ---
 
 # Frontend Angular – Clean Architecture + Standalone
@@ -32,7 +32,11 @@ Guide for creating and maintaining Angular frontends with **features** structure
 | TypeScript 5.9 | Typing |
 | Vitest 4 | Tests via `ng test` |
 
-This skill uses **ng-zorro-antd** as the default design system, matching [CleanStack](https://github.com/luismpenholato/clean-stack). Do not force ng-zorro on projects that already use Angular Material or another UI kit — adapt the patterns while keeping the feature structure.
+## Adaptation
+
+- Default UI kit in examples is **ng-zorro-antd**. Do not force it on projects that already use Angular Material or another kit — keep the feature/`pages/` structure and swap components.
+- Map `environment.apiBaseUrl` to the project's env/config pattern.
+- Example starter: [CleanStack](https://github.com/luismpenholato/clean-stack) Angular app — optional.
 
 ## Project structure
 
@@ -84,6 +88,11 @@ Rule: **pages/** = one folder per domain; inside it model, service, and **one su
 **Shared (only if reusable)**
 
 - [ ] Component/directive/pipe in `shared/` only when used in more than one feature.
+
+**Tests**
+
+- [ ] Spec next to each screen (`*.spec.ts`) covering load/error/empty paths when logic is non-trivial.
+- [ ] Prefer testing component signals/services over brittle DOM snapshots.
 
 ## Code patterns
 
@@ -149,6 +158,7 @@ export const authGuard: CanActivateFn = () => true; // replace with real auth
 - Placing entire features in `shared/` instead of `pages/`.
 - Using `ngClass` / `ngStyle` when `[class.x]` / `[style.x]` suffices.
 
-## Additional resources
+## Related
 
-- Detailed structure and data flow: [reference.md](reference.md).
+- Method / agent workflow: [Verdicspec](https://github.com/luismpenholato/verdicspec)
+- Detailed structure and data flow: [reference.md](reference.md)

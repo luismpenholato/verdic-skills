@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Validates Maurao Skills repository structure and content.
+ * Validates Verdic Skills repository structure and content.
  *
  * YAML frontmatter parsing is intentionally limited to simple key: value pairs
  * used in this repository (name, description). Complex YAML features are not supported.
@@ -211,7 +211,7 @@ async function main() {
 
 function printResults() {
   console.log('');
-  console.log('Maurao Skills — validation report');
+  console.log('Verdic Skills — validation report');
   console.log('=================================');
   console.log('');
 

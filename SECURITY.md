@@ -26,7 +26,7 @@ Security content fixes apply to the main branch (`main`) and the latest version 
 
 ### How to report
 
-1. **[GitHub Security Advisories](https://github.com/luismpenholato/maurao-skills/security/advisories/new)** (recommended)
+1. **[GitHub Security Advisories](https://github.com/luismpenholato/verdic-skills/security/advisories/new)** (recommended)
 2. Private contact with the maintainer, if an agreed channel exists
 
 ### Include in the report

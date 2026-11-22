@@ -1,6 +1,6 @@
 ---
 name: dotnet-backend-clean-architecture
-description: Clean Architecture + CQRS (MediatR) for .NET 10 backend APIs. Builds and maintains APIs with vertical slice (Features), Commands/Queries, handlers, validators, repositories, FluentMigrator, Refit integrations. Use when creating or refactoring .NET APIs, adding endpoints, commands, queries, entities, or when the user mentions Clean Architecture, CQRS, or MediatR.
+description: Clean Architecture + CQRS (MediatR) for .NET 10 APIs. Vertical-slice Features with Commands/Queries, handlers, validators, repositories, FluentMigrator, Refit. Use when creating or refactoring .NET APIs, endpoints, commands, queries, entities, or when the user mentions Clean Architecture, CQRS, or MediatR.
 ---
 
 # Backend .NET – Clean Architecture + CQRS
@@ -36,7 +36,12 @@ Guide for creating and maintaining .NET 10 backends with Clean Architecture, CQR
 
 Solution at backend root: `{Solution}.sln` and `.editorconfig` (adjust names to your project).
 
-Project names like `CleanStack.*` reflect the [CleanStack](https://github.com/luismpenholato/clean-stack) template. In other solutions, adapt prefixes to your naming convention while keeping the same layer boundaries.
+## Adaptation
+
+- Replace `{Prefix}` / `{Solution}` with the target solution naming.
+- If the project uses **EF Migrations** instead of FluentMigrator, skip Migration checklist items and keep EF maps consistent with migrations.
+- Keep layer boundaries even when folder or project names differ.
+- Example starter that follows this shape: [CleanStack](https://github.com/luismpenholato/clean-stack) — optional, not required.
 
 ## Solution structure
 
@@ -173,6 +178,7 @@ services.AddValidatorsFromAssemblyContaining<CreateProductValidator>();
 - **Do not use** `Application/Common/Behaviors/ValidationBehavior` in this pattern — validation stays in the handler.
 - Formatting: `dotnet format {Solution}.sln` (`.editorconfig`).
 
-## Additional resources
+## Related
 
-- Detailed structure, endpoints, and flows: [reference.md](reference.md).
+- Method / agent workflow: [Verdicspec](https://github.com/luismpenholato/verdicspec)
+- Detailed structure, endpoints, and flows: [reference.md](reference.md)

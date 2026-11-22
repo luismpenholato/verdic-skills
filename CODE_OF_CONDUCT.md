@@ -60,8 +60,8 @@ representative at an online or offline event.
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
 reported to the community leaders responsible for enforcement at
-[GitHub Issues](https://github.com/luismpenholato/maurao-skills/issues)
-or through a [private security advisory](https://github.com/luismpenholato/maurao-skills/security/advisories/new)
+[GitHub Issues](https://github.com/luismpenholato/verdic-skills/issues)
+or through a [private security advisory](https://github.com/luismpenholato/verdic-skills/security/advisories/new)
 when the report involves safety or malicious content.
 
 All complaints will be reviewed and investigated promptly and fairly.

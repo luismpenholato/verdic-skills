@@ -1,19 +1,26 @@
 ---
 name: dotnet-backend-clean-architecture
-description: Clean Architecture + CQRS (MediatR) for .NET 10 backend APIs. Builds and maintains APIs with vertical slice (Features), Commands/Queries, handlers, validators, repositories, FluentMigrator, Refit integrations. Use when creating or refactoring .NET APIs, adding endpoints, commands, queries, entities, or when the user mentions Clean Architecture, CQRS, or MediatR.
+description: Clean Architecture + CQRS (MediatR) for .NET 10 APIs. Vertical-slice Features with Commands/Queries, handlers, validators, repositories, FluentMigrator, Refit. Use when creating or refactoring .NET APIs, endpoints, commands, queries, entities, or when the user mentions Clean Architecture, CQRS, or MediatR.
 ---
 
 # Backend .NET – Clean Architecture + CQRS
 
 Guide for creating and maintaining .NET 10 backends with Clean Architecture, CQRS (MediatR), and **Features** organization (vertical slice).
 
-## When to use this skill
+## When to use
 
 - Add a new **feature** (new entity + CRUD or operations).
 - Add a **Command** or **Query** to an existing feature.
 - Create **Controller**, **Handler**, **Validator**, **Repository**, or **UnitOfWork**.
 - Configure **HTTP integration** (Refit + Http.Resilience).
 - Review or refactor code to follow this skill's pattern.
+
+## When not to use
+
+- Projects that do not use CQRS or MediatR.
+- Simple minimal APIs without layered architecture.
+- Codebases that use EF Migrations instead of FluentMigrator.
+- Projects that already follow a different, established backend pattern.
 
 ## Target stack
 
@@ -29,20 +36,27 @@ Guide for creating and maintaining .NET 10 backends with Clean Architecture, CQR
 
 Solution at backend root: `{Solution}.sln` and `.editorconfig` (adjust names to your project).
 
+## Adaptation
+
+- Replace `{Prefix}` / `{Solution}` with the target solution naming.
+- If the project uses **EF Migrations** instead of FluentMigrator, skip Migration checklist items and keep EF maps consistent with migrations.
+- Keep layer boundaries even when folder or project names differ.
+- Example starter that follows this shape: [CleanStack](https://github.com/luismpenholato/clean-stack) — optional, not required.
+
 ## Solution structure
 
 ```txt
 {solution-root}/
 ├── {Solution}.sln
 ├── .editorconfig
-├── CleanStack.Interface/          # API (Controllers, Program, Middlewares)
-├── CleanStack.Application/        # Features/ → Commands and Queries
-├── CleanStack.Domain/             # Entities, Interfaces, Services
-├── CleanStack.Infrastructure/     # EF Core, Repositories, UnitOfWork
-├── CleanStack.CrossCutting/       # DTOs, Options, Helpers
-├── CleanStack.CrossCutting.IOC/   # ConfigureBindings* (DI)
-├── CleanStack.Migration/          # FluentMigrator (console)
-└── CleanStack.Tests/              # Features/ mirroring Application
+├── {Prefix}.Interface/          # API (Controllers, Program, Middlewares)
+├── {Prefix}.Application/        # Features/ → Commands and Queries
+├── {Prefix}.Domain/             # Entities, Interfaces, Services
+├── {Prefix}.Infrastructure/     # EF Core, Repositories, UnitOfWork
+├── {Prefix}.CrossCutting/       # DTOs, Options, Helpers
+├── {Prefix}.CrossCutting.IOC/   # ConfigureBindings* (DI)
+├── {Prefix}.Migration/          # FluentMigrator (console)
+└── {Prefix}.Tests/              # Features/ mirroring Application
 ```
 
 Dependency rule: **Interface** → Application, CrossCutting, CrossCutting.IOC. **Application** and **Infrastructure** reference **Domain**. **Application** does not reference Infrastructure.
@@ -85,14 +99,14 @@ Dependency rule: **Interface** → Application, CrossCutting, CrossCutting.IOC. 
 
 **Tests**
 
-- [ ] In `CleanStack.Tests/Features/Orders/` mirroring Application:
+- [ ] In `{Prefix}.Tests/Features/Orders/` mirroring Application:
   - `{Command}HandlerTests.cs` / `{Query}HandlerTests.cs` — NSubstitute; mock `IValidator<T>` in handlers.
   - `{Command}ValidatorTests.cs` — real validator + `Validate()`.
 - [ ] `[Trait("Category", "Orders")]`.
 
 **Migration**
 
-- [ ] New FluentMigrator class in `CleanStack.Migration/Migrations/` (e.g., `Mig_YYYYMMDDHHMMSS_CreateOrders.cs`).
+- [ ] New FluentMigrator class in `{Prefix}.Migration/Migrations/` (e.g., `Mig_YYYYMMDDHHMMSS_CreateOrders.cs`).
 - [ ] Keep aligned with EF `Persistence/Map/`.
 
 ## External HTTP integration (Products pattern)
@@ -147,15 +161,24 @@ services.AddValidatorsFromAssemblyContaining<CreateProductValidator>();
 - Other exceptions → 500 (generic message in production).
 - Middleware: `GlobalExceptionMiddleware` in **Interface**.
 
+## Anti-patterns
+
+- Global `ValidationBehavior` instead of explicit `ValidateAndThrowAsync` in handlers.
+- Application referencing Infrastructure directly.
+- EF Migrations mixed with FluentMigrator in the same project.
+- Business logic in controllers instead of MediatR handlers.
+- Skipping validator or handler unit tests for new commands.
+
 ## Conventions
 
-- Namespaces: `CleanStack.Application.Features.{Feature}.Commands.{CommandName}` and `...Queries.{QueryName}`.
+- Namespaces: `{Prefix}.Application.Features.{Feature}.Commands.{CommandName}` and `...Queries.{QueryName}`.
 - One command/query **per folder** in Commands/ or Queries/.
 - API DTOs in **CrossCutting.Dto**; entities in Domain.
 - New bindings in **CrossCutting.IOC** (`ConfigureBindings*.cs`).
 - **Do not use** `Application/Common/Behaviors/ValidationBehavior` in this pattern — validation stays in the handler.
 - Formatting: `dotnet format {Solution}.sln` (`.editorconfig`).
 
-## Additional resources
+## Related
 
-- Detailed structure, endpoints, and flows: [reference.md](reference.md).
+- Method / agent workflow: [Verdicspec](https://github.com/luismpenholato/verdicspec)
+- Detailed structure, endpoints, and flows: [reference.md](reference.md)

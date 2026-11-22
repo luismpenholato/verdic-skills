@@ -1,8 +1,8 @@
 {
-  "name": "maurao-skills",
+  "name": "verdic-skills",
   "version": "0.1.0",
   "private": true,
-  "description": "Reusable AI Agent Skills for CleanStack and modern software engineering.",
+  "description": "Reusable Agent Skills for .NET, Angular, React and Clean Architecture workflows.",
   "scripts": {
     "validate": "node scripts/validate-skills.mjs"
   },

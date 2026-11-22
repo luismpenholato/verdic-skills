@@ -15,6 +15,13 @@ Skill for creating and maintaining React 19 + Next.js 16 frontends with feature 
 - Refactor React components to vertical slice
 - Define service, hook, schema, and route patterns
 
+## When not to use
+
+- React projects without Next.js.
+- Codebases on the Pages Router instead of App Router.
+- Projects where Tailwind or Shadcn is the primary design system.
+- Applications that use GraphQL instead of REST for data fetching.
+
 ## Expected structure
 
 ```txt
@@ -44,6 +51,12 @@ src/shared/        → components, providers, lib (api, auth, env), theme/
 10. Drawer/menu: `rootClassName="app-drawer"` + CSS `.app-drawer .drawer-menu` (portaled to body)
 11. SEO: `shared/lib/seo/metadata.ts` + metadata per route; `noindex` in admin app
 12. Forbidden: `any`, Axios directly in visual components; legacy redirects without need
+
+## Adaptation
+
+- Default UI kit in examples is **Ant Design**. Do not force it where Tailwind/Shadcn (or another kit) is already primary — keep `features/` + `shared/` boundaries and swap UI primitives.
+- Keep HTTP and env access centralized even if the client library differs from Axios.
+- Example starter: [CleanStack](https://github.com/luismpenholato/clean-stack) React app — optional.
 
 ## Ant Design + App Router
 
@@ -123,6 +136,21 @@ Component: `useForm` + `zodResolver` + `Controller` + Ant Design `Form.Item`.
 
 1. types → 2. schema (+ test) → 3. service → 4. hooks → 5. components → 6. page → 7. route in app/
 
-## Reference
+## Error handling
 
-Detailed examples in [`reference.md`](reference.md).
+- Surface API failures with Ant Design `message`/`notification` (or project equivalent), not silent `catch`.
+- Mutations should invalidate related query keys and restore UI loading/disabled state in `onSettled`.
+- Prefer typed error helpers in `shared/lib/api/` over ad-hoc `any` in pages.
+
+## Anti-patterns
+
+- Business logic in `src/app/page.tsx` instead of feature pages.
+- Axios calls directly in visual components.
+- Scattered `process.env` access outside `shared/lib/env`.
+- Mixing Tailwind/Shadcn with Ant Design as co-primary design systems.
+- Hooks that return JSX instead of data and handlers.
+
+## Related
+
+- Method / agent workflow: [Verdicspec](https://github.com/luismpenholato/verdicspec)
+- Detailed examples: [`reference.md`](reference.md)

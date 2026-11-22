@@ -52,7 +52,11 @@ src/shared/        → components, providers, lib (api, auth, env), theme/
 11. SEO: `shared/lib/seo/metadata.ts` + metadata per route; `noindex` in admin app
 12. Forbidden: `any`, Axios directly in visual components; legacy redirects without need
 
-This skill uses **Ant Design** as the default design system, matching [CleanStack](https://github.com/luismpenholato/clean-stack). Do not force Ant Design on projects that already use another design system — adapt the feature structure and patterns instead.
+## Adaptation
+
+- Default UI kit in examples is **Ant Design**. Do not force it where Tailwind/Shadcn (or another kit) is already primary — keep `features/` + `shared/` boundaries and swap UI primitives.
+- Keep HTTP and env access centralized even if the client library differs from Axios.
+- Example starter: [CleanStack](https://github.com/luismpenholato/clean-stack) React app — optional.
 
 ## Ant Design + App Router
 
@@ -132,6 +136,12 @@ Component: `useForm` + `zodResolver` + `Controller` + Ant Design `Form.Item`.
 
 1. types → 2. schema (+ test) → 3. service → 4. hooks → 5. components → 6. page → 7. route in app/
 
+## Error handling
+
+- Surface API failures with Ant Design `message`/`notification` (or project equivalent), not silent `catch`.
+- Mutations should invalidate related query keys and restore UI loading/disabled state in `onSettled`.
+- Prefer typed error helpers in `shared/lib/api/` over ad-hoc `any` in pages.
+
 ## Anti-patterns
 
 - Business logic in `src/app/page.tsx` instead of feature pages.
@@ -140,6 +150,7 @@ Component: `useForm` + `zodResolver` + `Controller` + Ant Design `Form.Item`.
 - Mixing Tailwind/Shadcn with Ant Design as co-primary design systems.
 - Hooks that return JSX instead of data and handlers.
 
-## Reference
+## Related
 
-Detailed examples in [`reference.md`](reference.md).
+- Method / agent workflow: [Verdicspec](https://github.com/luismpenholato/verdicspec)
+- Detailed examples: [`reference.md`](reference.md)
