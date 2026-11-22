@@ -1,16 +1,16 @@
-# Verdic Skills
+# Verdicspec Skills
 
 Reusable [Agent Skills](https://skills.sh) for **.NET**, **Angular**, **React / Next.js**, Clean Architecture patterns, and developer workflows.
 
-Part of the **Verdicspec** ecosystem: [Verdicspec](https://github.com/luismpenholato/verdicspec) is the portable specification-driven method; **Verdic Skills** is the installable library of concrete skill recipes agents follow in day-to-day coding.
+Part of the **Verdicspec** ecosystem: [Verdicspec](https://github.com/luismpenholato/verdicspec) is the portable specification-driven method; **Verdicspec Skills** is the installable library of concrete skill recipes agents follow in day-to-day coding.
 
-[![Skills Validation](https://github.com/luismpenholato/verdic-skills/actions/workflows/validate-skills.yml/badge.svg)](https://github.com/luismpenholato/verdic-skills/actions/workflows/validate-skills.yml)
-[![MIT License](https://img.shields.io/github/license/luismpenholato/verdic-skills)](LICENSE)
+[![Skills Validation](https://github.com/luismpenholato/verdicspec-skills/actions/workflows/validate-skills.yml/badge.svg)](https://github.com/luismpenholato/verdicspec-skills/actions/workflows/validate-skills.yml)
+[![MIT License](https://img.shields.io/github/license/luismpenholato/verdicspec-skills)](LICENSE)
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/luismpenholato?label=Sponsor&logo=githubsponsors&logoColor=white&color=ea4aaa)](https://github.com/sponsors/luismpenholato)
 
 ## About
 
-**Verdic Skills** is a local-first collection of Markdown-based skills. Each skill encodes proven conventions — vertical slices, CQRS, typed frontends, validation and tests — so agents produce consistent, reviewable code instead of generic boilerplate.
+**Verdicspec Skills** is a local-first collection of Markdown-based skills. Each skill encodes proven conventions — vertical slices, CQRS, typed frontends, validation and tests — so agents produce consistent, reviewable code instead of generic boilerplate.
 
 The repository stays intentionally simple: no web app, no published runtime package. Skills are plain files you install, reference, or copy into your workspace.
 
@@ -20,7 +20,7 @@ Skills are **stack-oriented**, not tied to a single starter. Adapt folder prefix
 flowchart LR
     Developer --> Agent[AI Agent]
     Agent --> Method[Verdicspec method]
-    Agent --> Skills[Verdic Skills]
+    Agent --> Skills[Verdicspec Skills]
     Skills --> DotNet[.NET APIs]
     Skills --> Angular[Angular SPAs]
     Skills --> React[React / Next.js]
@@ -53,18 +53,18 @@ Exact install destination and flags depend on the Agent Skills CLI and the targe
 ### List skills
 
 ```bash
-npx skills add luismpenholato/verdic-skills --list
+npx skills add luismpenholato/verdicspec-skills --list
 ```
 
 ### Install a skill
 
 ```bash
-npx skills add luismpenholato/verdic-skills --skill dotnet-backend-clean-architecture
-npx skills add luismpenholato/verdic-skills --skill angular-frontend-clean-architecture
-npx skills add luismpenholato/verdic-skills --skill react-nextjs-antd-clean-architecture
-npx skills add luismpenholato/verdic-skills --skill application-security-review
-npx skills add luismpenholato/verdic-skills --skill api-http-testing
-npx skills add luismpenholato/verdic-skills --skill observability-logging
+npx skills add luismpenholato/verdicspec-skills --skill dotnet-backend-clean-architecture
+npx skills add luismpenholato/verdicspec-skills --skill angular-frontend-clean-architecture
+npx skills add luismpenholato/verdicspec-skills --skill react-nextjs-antd-clean-architecture
+npx skills add luismpenholato/verdicspec-skills --skill application-security-review
+npx skills add luismpenholato/verdicspec-skills --skill api-http-testing
+npx skills add luismpenholato/verdicspec-skills --skill observability-logging
 ```
 
 Use CLI flags such as `--global` or `--agent` when available. Not every agent supports automatic installation — see [Compatibility](#compatibility).
@@ -101,7 +101,7 @@ Expected: feature under `src/features/orders/`, thin route in `src/app/`, HTTP i
 ## Repository structure
 
 ```txt
-verdic-skills/
+verdicspec-skills/
 ├── .github/
 ├── scripts/validate-skills.mjs
 ├── skills/
@@ -145,7 +145,7 @@ See [SECURITY.md](SECURITY.md). Do not open public issues for security-sensitive
 
 ## Support
 
-- [Issues](https://github.com/luismpenholato/verdic-skills/issues) for bugs, corrections and skill requests
+- [Issues](https://github.com/luismpenholato/verdicspec-skills/issues) for bugs, corrections and skill requests
 - [GitHub Sponsors](https://github.com/sponsors/luismpenholato) for Verdicspec / Nebula maintenance
 
 ## License
