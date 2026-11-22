@@ -29,5 +29,5 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 - CI workflow for skill validation.
 - Repository governance and contribution templates.
 
-[Unreleased]: https://github.com/luismpenholato/verdic-skills/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/luismpenholato/verdic-skills/releases/tag/v0.1.0
+[Unreleased]: https://github.com/luismpenholato/verdicspec-skills/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/luismpenholato/verdicspec-skills/releases/tag/v0.1.0
