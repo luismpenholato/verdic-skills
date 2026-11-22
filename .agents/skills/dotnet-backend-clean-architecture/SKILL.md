@@ -181,4 +181,7 @@ services.AddValidatorsFromAssemblyContaining<CreateProductValidator>();
 ## Related
 
 - Method / agent workflow: [Verdicspec](https://github.com/luismpenholato/verdicspec)
+- Security review: `application-security-review`
+- API tests: `api-http-testing`
+- Logging: `observability-logging`
 - Detailed structure, endpoints, and flows: [reference.md](reference.md)

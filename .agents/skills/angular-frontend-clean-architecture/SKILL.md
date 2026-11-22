@@ -161,4 +161,5 @@ export const authGuard: CanActivateFn = () => true; // replace with real auth
 ## Related
 
 - Method / agent workflow: [Verdicspec](https://github.com/luismpenholato/verdicspec)
+- Security review (XSS, tokens, guards vs API): `application-security-review`
 - Detailed structure and data flow: [reference.md](reference.md)

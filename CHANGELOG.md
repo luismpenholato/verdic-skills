@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 
 ## [Unreleased]
 
+### Added
+
+- `application-security-review` skill (auth, secrets, injection, XSS, supply chain).
+- `api-http-testing` skill (unit/integration/contract pyramid for APIs).
+- `observability-logging` skill (structured logs, correlation, safe diagnostics).
+
 ### Changed
 
 - Renamed repository from `maurao-skills` to `verdic-skills`.

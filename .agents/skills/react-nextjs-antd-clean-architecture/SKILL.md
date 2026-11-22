@@ -153,4 +153,6 @@ Component: `useForm` + `zodResolver` + `Controller` + Ant Design `Form.Item`.
 ## Related
 
 - Method / agent workflow: [Verdicspec](https://github.com/luismpenholato/verdicspec)
+- Security review (XSS, `NEXT_PUBLIC_*`, cookies): `application-security-review`
+- Logging: `observability-logging`
 - Detailed examples: [`reference.md`](reference.md)

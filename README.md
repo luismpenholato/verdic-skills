@@ -28,13 +28,21 @@ flowchart LR
 
 ## Available skills
 
+### Stack
+
 | Skill | Target | Main use cases |
 |---|---|---|
-| [dotnet-backend-clean-architecture](skills/dotnet-backend-clean-architecture/) | .NET 10 | APIs with Clean Architecture, CQRS, MediatR, FluentValidation, EF Core, FluentMigrator, Refit and unit tests |
-| [angular-frontend-clean-architecture](skills/angular-frontend-clean-architecture/) | Angular 21 | Standalone apps with signals, vertical slices, OnPush, ng-zorro and Vitest |
-| [react-nextjs-antd-clean-architecture](skills/react-nextjs-antd-clean-architecture/) | React 19 / Next.js 16 | App Router apps with Ant Design, TanStack Query, React Hook Form, Zod and Vitest |
+| [dotnet-backend-clean-architecture](skills/dotnet-backend-clean-architecture/) | .NET 10 | Clean Architecture APIs, CQRS, MediatR, FluentValidation, EF Core, FluentMigrator, Refit |
+| [angular-frontend-clean-architecture](skills/angular-frontend-clean-architecture/) | Angular 21 | Standalone apps, signals, vertical slices, OnPush, ng-zorro, Vitest |
+| [react-nextjs-antd-clean-architecture](skills/react-nextjs-antd-clean-architecture/) | React 19 / Next.js 16 | App Router, Ant Design, TanStack Query, React Hook Form, Zod |
 
-More skills will be added over time (testing, observability, security reviews, etc.).
+### Cross-cutting
+
+| Skill | Target | Main use cases |
+|---|---|---|
+| [application-security-review](skills/application-security-review/) | Any stack | AuthZ/AuthN, secrets, injection, XSS, IDOR, SSRF, CORS, supply chain |
+| [api-http-testing](skills/api-http-testing/) | .NET / Node APIs | Handler unit tests, integration (Testcontainers), contract checks |
+| [observability-logging](skills/observability-logging/) | .NET / Node / Next | Structured logs, correlation, metrics, safe diagnostics |
 
 ## Installation
 
@@ -54,6 +62,9 @@ npx skills add luismpenholato/verdic-skills --list
 npx skills add luismpenholato/verdic-skills --skill dotnet-backend-clean-architecture
 npx skills add luismpenholato/verdic-skills --skill angular-frontend-clean-architecture
 npx skills add luismpenholato/verdic-skills --skill react-nextjs-antd-clean-architecture
+npx skills add luismpenholato/verdic-skills --skill application-security-review
+npx skills add luismpenholato/verdic-skills --skill api-http-testing
+npx skills add luismpenholato/verdic-skills --skill observability-logging
 ```
 
 Use CLI flags such as `--global` or `--agent` when available. Not every agent supports automatic installation — see [Compatibility](#compatibility).
@@ -94,6 +105,9 @@ verdic-skills/
 ├── .github/
 ├── scripts/validate-skills.mjs
 ├── skills/
+│   ├── application-security-review/
+│   ├── api-http-testing/
+│   ├── observability-logging/
 │   ├── dotnet-backend-clean-architecture/
 │   ├── angular-frontend-clean-architecture/
 │   └── react-nextjs-antd-clean-architecture/
